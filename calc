@@ -1,0 +1,105 @@
+#!/bin/env python3
+
+class color:
+  normal     = '\33[0m'
+  red      = '\33[31m'
+  green    = '\33[32m'
+  yellow   = '\33[33m'
+  white    = '\33[37m'
+  grey     = '\33[90m'
+
+def println(text):
+    print(text)
+
+def scanln(prompt):
+    return input(prompt)
+
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    return x / y
+version = "1.2"
+
+println("Calculator %sv%s%s" % (color.grey, version, color.normal))
+println("===================================")
+println("[%s1%s] Addition\n[%s2%s] Subtraction\n[%s3%s] Multiplication\n[%s4%s] Division\n[%s5%s/%s0%s] Exit\nType the operation number to start." % (color.yellow, color.normal, color.yellow, color.normal, color.yellow, color.normal, color.yellow, color.normal, color.red, color.normal, color.red, color.normal))
+println("===================================")
+while True:
+  operation = scanln("> ")
+  if operation == "":
+    pass
+  elif operation == "1":
+    while True:
+      try:
+        x = int(scanln("Enter first number: \n> "))
+      except ValueError:
+        println("Not a Number")
+        break
+      try:
+        y = int(scanln("Enter second number: \n> "))
+        println("{} + {} = {}".format(x, y, add(x, y)))
+        break
+      except ValueError:
+        println("Not a Number")
+        break
+  elif operation == "2":
+    while True:
+      try:
+        x = int(scanln("Enter first number: \n> "))
+      except ValueError:
+        println("Not a Number")
+        break
+      try:
+        y = int(scanln("Enter second number: \n> "))
+        println("{} - {} = {}".format(x, y, subtract(x, y)))
+        break
+      except ValueError:
+        println("Not a Number")
+        break
+  elif operation == "3":
+    while True:
+      try:
+        x = int(scanln("Enter first number: \n> "))
+      except ValueError:
+        println("Not a Number")
+        break
+      try:
+        y = int(scanln("Enter second number: \n> "))
+        println("{} × {} = {}".format(x, y, multiply(x, y)))
+        break
+      except ValueError:
+        println("Not a Number")
+        break
+  elif operation == "4":
+    while True:
+      try:
+        x = float(scanln("Enter first number: \n> "))
+      except ValueError:
+        println("Not a Number")
+        break
+      try:
+        y = float(scanln("Enter second number: \n> "))
+        try:
+          println("{} ÷ {} = {}".format(x, y, divide(x, y)))
+          break
+        except ZeroDivisionError:
+          println("Canot divide by zero")
+          break
+      except ValueError:
+        println("Not a Number")
+        break
+  elif operation == "exit":
+    break
+  elif operation == "5":
+    break
+  elif operation == "0":
+    break
+  else:
+    println("Not an number.")
